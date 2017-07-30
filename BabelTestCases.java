@@ -4,15 +4,16 @@ import static org.junit.Assert.*;
 
 import org.junit.Test;
 
-public class BabelTestCases {
-
+public class BabelTestCases 
+{
+	//Unit Test for the Python class
 	@Test
 	public void PythonClassTest() 
 	{
 		Python py = new Python();
-		assertEquals(".py", py.getExtension());
+		assertEquals(py.getExtension(), ".py");
 		
-		assertEquals("Python", py.getLanguage());
+		assertEquals(py.getLanguage(), "Python", );
 	}
 
 }
