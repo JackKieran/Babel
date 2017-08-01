@@ -1,4 +1,4 @@
-package BabelMainPackage;
+package translator;
 
 import java.io.File;
 

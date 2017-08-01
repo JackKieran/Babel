@@ -1,4 +1,4 @@
-package BabelMainPackage;
+package language;
 
 public class Python implements Language 
 {

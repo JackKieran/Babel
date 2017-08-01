@@ -1,4 +1,4 @@
-package BabelMainPackage;
+package Babel;
 
 import static org.junit.Assert.*;
 

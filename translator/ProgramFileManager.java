@@ -1,4 +1,4 @@
-package BabelMainPackage;
+package translator;
 
 import java.lang.reflect.InvocationTargetException;
 import java.lang.reflect.Method;

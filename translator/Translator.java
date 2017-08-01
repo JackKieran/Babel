@@ -1,4 +1,4 @@
-package BabelMainPackage;
+package translator;
 
 public class Translator 
 {	

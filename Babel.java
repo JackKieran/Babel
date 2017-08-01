@@ -1,4 +1,4 @@
-package BabelMainPackage;
+package Babel;
 
 import java.awt.Component;
 import java.awt.GridLayout;

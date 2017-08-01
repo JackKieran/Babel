@@ -1,4 +1,4 @@
-package BabelMainPackage;
+package language;
 
 public interface Language 
 {
