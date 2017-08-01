@@ -2,6 +2,8 @@ package translator;
 
 import java.io.File;
 
+import language.*;
+
 public class ProgramFile 
 {
 

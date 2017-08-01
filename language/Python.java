@@ -1,6 +1,6 @@
 package language;
 
-public class Python implements Language 
+public class Python extends Language 
 {
 	@Override
 	public String getExtension()

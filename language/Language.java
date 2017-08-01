@@ -1,9 +1,15 @@
 package language;
 
-public interface Language 
+public class Language 
 {
-	public abstract String getExtension();
+	public String getExtension()
+	{
+		return ".extension";
+	}
 	
-	public abstract String getLanguage();
+	public String getLanguage()
+	{
+		return "language";
+	}
 	
 }

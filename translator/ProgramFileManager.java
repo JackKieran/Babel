@@ -3,6 +3,8 @@ package translator;
 import java.lang.reflect.InvocationTargetException;
 import java.lang.reflect.Method;
 
+import language.Python;
+
 public class ProgramFileManager 
 {
 	public static ProgramFileManager instance = null;

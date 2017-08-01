@@ -1,6 +1,6 @@
 package language;
 
-public class Java implements Language 
+public class Java extends Language 
 {
 
 	@Override
