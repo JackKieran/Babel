@@ -1,18 +1,23 @@
 package language;
 
+import language.statement.*;
+
 public class Java extends Language 
 {
 
-	@Override
-	public String getExtension() 
+	public static String getExtension() 
 	{
 		return ".java";
 	}
 
-	@Override
-	public String getLanguage() 
+	public static String getLanguage() 
 	{
 		return "Java";
+	}
+
+	public static Statement returnStatement() 
+	{
+		return new ReturnStatement(5);
 	}
 
 }

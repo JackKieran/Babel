@@ -1,13 +1,13 @@
 package language;
 
-public class Language 
+class Language 
 {
-	public String getExtension()
+	public static String getExtension()
 	{
 		return ".extension";
 	}
 	
-	public String getLanguage()
+	public static String getLanguage()
 	{
 		return "language";
 	}

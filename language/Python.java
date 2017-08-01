@@ -2,14 +2,12 @@ package language;
 
 public class Python extends Language 
 {
-	@Override
-	public String getExtension()
+	public static String getExtension()
 	{
 		return ".py";
 	}
 
-	@Override
-	public String getLanguage() 
+	public static String getLanguage() 
 	{
 		return "Python";
 	}

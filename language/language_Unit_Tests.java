@@ -9,10 +9,15 @@ public class language_Unit_Tests {
 	@Test
 	public void javaTest() 
 	{
-		Language java = new Java();
-		
-		assertEquals(java.getLanguage(), "Java");
-		assertEquals(java.getExtension(), ".java");
+		assertEquals(Java.getLanguage(), "Java");
+		assertEquals(Java.getExtension(), ".java");
 	}
 
+	@Test
+	public void pythonTest()
+	{
+		assertEquals(Python.getLanguage(), "Python");
+		assertEquals(Python.getExtension(), ".py");
+	}
+	
 }
