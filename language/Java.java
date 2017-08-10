@@ -1,9 +1,8 @@
 package language;
 
-import language.statement.*;
-
 public class Java extends Language 
 {
+	private static final String RETURN = "return [\"]*[a-zA-Z0-9\\s\\W]*[\"]*;";
 
 	public static String getExtension() 
 	{
@@ -15,9 +14,21 @@ public class Java extends Language
 		return "Java";
 	}
 
-	public static Statement returnStatement() 
+	public static String determineStatementType(String statement)
 	{
-		return new ReturnStatement(5);
+		String result = null;
+		
+		System.out.println(statement);
+		
+		if(statement.matches(RETURN))
+			result = "RETURN";
+		
+		return result;
+	}
+	
+	public static String returnStatement(String parameter) 
+	{
+		return "return " + parameter + ";";
 	}
 
 }
