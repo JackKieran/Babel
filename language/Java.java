@@ -18,8 +18,6 @@ public class Java extends Language
 	{
 		String result = null;
 		
-		System.out.println(statement);
-		
 		if(statement.matches(RETURN))
 			result = "RETURN";
 		

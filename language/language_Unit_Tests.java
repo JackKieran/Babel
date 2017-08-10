@@ -29,6 +29,12 @@ public class language_Unit_Tests
 	
 		assertEquals(Python.getLanguage(), "Python");
 		assertEquals(Python.getExtension(), ".py");
+		
+		assertEquals(Python.returnStatement("5"), "return 5");
+		assertEquals(Python.determineStatementType(Python.returnStatement("5")), "RETURN");
+		
+		assertEquals(Python.returnStatement("\"Hello World!\""), "return \"Hello World!\"");
+		assertEquals(Python.determineStatementType(Python.returnStatement("\"Hello World!\"")), "RETURN");
 	}
 	
 }
