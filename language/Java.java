@@ -3,7 +3,7 @@ package language;
 public class Java extends Language 
 {
 	private static final String RETURN = "return [\"]*[a-zA-Z0-9\\s\\W]*[\"]*;";
-	private static final String ASSIGNMENT = "[a-zA-Z0-9]+ [\\W]?= [\\W]?[a-zA-Z0-9]+[\\W]?;";
+	private static final String ASSIGNMENT = "[a-zA-Z0-9\\s]+ [\\W]?= [\\W]?[a-zA-Z0-9]+[\\W]?;";
 
 	public static String getExtension() 
 	{
