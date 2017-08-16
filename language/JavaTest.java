@@ -49,26 +49,60 @@ public class JavaTest
 	}
 	
 	@Test
-	public void ClassGivenAssignmentNonSpecifiedTypeStatement()
+	public void ClassGivenStringAssignmentNonSpecifiedTypeStatement()
 	{
 		assertEquals("ASSIGNMENT", Java.determineStatementType(Java.assignmentStatement("hello", "hello")));
 	}
 	
 	@Test
-	public void TesterGivenAssignmentNonSpecifiedTypeStatement()
+	public void TesterGivenStringAssignmentNonSpecifiedTypeStatement()
 	{
 		assertEquals("ASSIGNMENT", Java.determineStatementType("hello = \"hello\";"));
 	}
 	
 	@Test
-	public void ClassGivenAssignmentSpecifiedTypeStatement()
+	public void ClassGivenStringAssignmentSpecifiedTypeStatement()
 	{
-		assertEquals("ASSIGNMENT", Java.determineStatementType(Java.assignmentStatement("String hello", "hello")));
+		assertEquals("ASSIGNMENT", Java.determineStatementType(Java.assignmentStatement("String hello", "hello there")));
 	}
 	
 	@Test
-	public void TesterGivenAssignmentSpecifiedTypeStatement()
+	public void TesterGivenStringAssignmentSpecifiedTypeStatement()
 	{
-		assertEquals("ASSIGNMENT", Java.determineStatementType("String hello = \"hello\";"));
+		assertEquals("ASSIGNMENT", Java.determineStatementType("String hello = \"hello there\";"));
+	}
+	
+	@Test
+	public void ClassGivenFloatAssignmentNonSpecifiedTypeStatement()
+	{
+		assertEquals("ASSIGNMENT", Java.determineStatementType(Java.assignmentStatement("variable", "5.0f")));
+	}
+	
+	@Test
+	public void TesterGivenFloatAssignmentNonSpecifiedTypeStatement()
+	{
+		assertEquals("ASSIGNMENT", Java.determineStatementType("variable = 5.0f;"));
+	}
+	
+	@Test
+	public void ClassGivenFloatAssignmentSpecifiedTypeStatement()
+	{
+		assertEquals("ASSIGNMENT", Java.determineStatementType(Java.assignmentStatement("float variable", "5.0f")));
+	}
+	
+	@Test
+	public void TesterGivenFloatAssignmentSpecifiedTypeSatement()
+	{
+		assertEquals("ASSIGNMENT", Java.determineStatementType("float variable = 5.0f;"));
+	}
+	
+	
+	
+	@Test
+	public void OpeningStatement()
+	{
+		String statement = Java.openingStatement("ClassName", "public");
+		System.out.println(statement);
+		assertEquals("OPENING", Java.determineStatementType(statement));
 	}
 }
