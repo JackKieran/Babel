@@ -13,49 +13,49 @@ public class PythonTest
 	}
 	
 	@Test
-	public void ClassGivenReturnVariableStatementTest()
+	public void ClassGivenReturnVariableStatement()
 	{
 		assertEquals("RETURN", Python.determineStatementType(Python.returnStatement("variable")));
 	}
 	
 	@Test
-	public void TesterGivenReturnVariableStatementTest()
+	public void TesterGivenReturnVariableStatement()
 	{
 		assertEquals("RETURN", Python.determineStatementType("return variable"));
 	}
 	
 	@Test
-	public void ClassGivenReturnIntStatementTest()
+	public void ClassGivenReturnIntStatement()
 	{
 		assertEquals("RETURN", Python.determineStatementType(Python.returnStatement("5")));
 	}
 	
 	@Test
-	public void TesterGivenReturnIntStatementTest()
+	public void TesterGivenReturnIntStatement()
 	{
 		assertEquals("RETURN", Python.determineStatementType("return 5"));
 	}
 	
 	@Test
-	public void ClassGivenReturnFloatStatementTest()
+	public void ClassGivenReturnFloatStatement()
 	{
 		assertEquals("RETURN", Python.determineStatementType(Python.returnStatement("5.0f")));
 	}
 	
 	@Test
-	public void TesterGivenReturnFloatStatementTest()
+	public void TesterGivenReturnFloatStatement()
 	{
 		assertEquals("RETURN", Python.determineStatementType("return 5.0f"));
 	}
 	
 	@Test
-	public void ClassGivenReturnStringStatementTest()
+	public void ClassGivenReturnStringStatement()
 	{
 		assertEquals("RETURN", Python.determineStatementType(Python.returnStatement("\"result\"")));
 	}
 	
 	@Test
-	public void TesterGivenReturnStringStatementTest()
+	public void TesterGivenReturnStringStatement()
 	{
 		assertEquals("RETURN", Python.determineStatementType("return \"result\""));
 	}

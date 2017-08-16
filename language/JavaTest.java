@@ -99,10 +99,51 @@ public class JavaTest
 	
 	
 	@Test
-	public void OpeningStatement()
+	public void ClassGivenPublicClassOpeningStatement()
 	{
-		String statement = Java.openingStatement("ClassName", "public");
-		System.out.println(statement);
-		assertEquals("OPENING", Java.determineStatementType(statement));
+		assertEquals("OPENING", Java.determineStatementType(Java.openingStatement("ClassName", "public")));
+	}
+	
+	@Test
+	public void TesterGivenPublicClassOpeningStatement()
+	{
+		assertEquals("OPENING", Java.determineStatementType("public class ClassName {"));
+	}
+	
+	@Test
+	public void ClassGivenPrivateClassOpeningStatement()
+	{
+		assertEquals("OPENING", Java.determineStatementType(Java.openingStatement("ClassName", "private")));
+	}
+	
+	@Test
+	public void TesterGivenPrivateClassOpeningStatement()
+	{
+		assertEquals("OPENING", Java.determineStatementType("private class ClassName {"));
+	}
+	
+	@Test
+	public void ClassGivenProtectedClassOpeningStatement()
+	{
+		assertEquals("OPENING", Java.determineStatementType(Java.openingStatement("ClassName", "protected")));
+	}
+	
+	@Test
+	public void TesterGivenProtectedClassOpeningStatement()
+	{
+		assertEquals("OPENING", Java.determineStatementType("protected class ClassName {"));
+	}
+	
+	@Test
+	public void ClassGivenDefaultClassOpeningStatement()
+	{
+		System.out.println(Java.openingStatement("ClassName", ""));
+		assertEquals("OPENING", Java.determineStatementType(Java.openingStatement("ClassName", "")));
+	}
+	
+	@Test
+	public void TesterGivenDefaultClassOpeningStatement()
+	{
+		assertEquals("OPENING", Java.determineStatementType("class ClassName {"));
 	}
 }

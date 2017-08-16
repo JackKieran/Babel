@@ -4,7 +4,7 @@ public class Java extends Language
 {
 	private static final String RETURN = "return [\"]*[a-zA-Z0-9\\s\\W]*[\"]*;";
 	private static final String ASSIGNMENT = "[a-zA-Z0-9\\s]+ [\\W]?= [\\W]?[a-zA-Z0-9\\s\\W]+[\\W]?;";
-	private static final String OPENING = "(public|private|protected) class [a-zA-Z0-9\\s\\W]* \\{";
+	private static final String OPENING = "(public|private|protected)?[\\s]?class [a-zA-Z0-9\\s\\W]* \\{";
 	
 	public static String getExtension() 
 	{
@@ -44,6 +44,6 @@ public class Java extends Language
 	
 	public static String openingStatement(String className, String visability)
 	{
-		return visability + " class " + className + " {";
+		return (visability + " class " + className + " {").trim();
 	}
 }
