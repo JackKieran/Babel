@@ -96,7 +96,17 @@ public class JavaTest
 		assertEquals("ASSIGNMENT", Java.determineStatementType("float variable = 5.0f;"));
 	}
 	
+	@Test
+	public void ClassGivenCharAssignmentSpecifiedTypeStatement()
+	{
+		assertEquals("ASSIGNMENT", Java.determineStatementType(Java.assignmentStatement("char variable", "a")));
+	}
 	
+	@Test
+	public void TesterGivenCharAssignmentSpecifiedTypeStatement()
+	{
+		assertEquals("ASSIGNMENT", Java.determineStatementType("char variable = 'a';"));
+	}
 	
 	@Test
 	public void ClassGivenPublicClassOpeningStatement()
@@ -137,7 +147,6 @@ public class JavaTest
 	@Test
 	public void ClassGivenDefaultClassOpeningStatement()
 	{
-		System.out.println(Java.openingStatement("ClassName", ""));
 		assertEquals("OPENING", Java.determineStatementType(Java.openingStatement("ClassName", "")));
 	}
 	
