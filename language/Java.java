@@ -5,6 +5,7 @@ public class Java extends Language
 	private static final String RETURN = "return [\"]*[a-zA-Z0-9\\s\\W]*[\"]*;";
 	private static final String ASSIGNMENT = "[a-zA-Z0-9\\s]+ [\\W]?= [\\W]?[a-zA-Z0-9\\s\\W]+[\\W]?;";
 	private static final String OPENING = "(public|private|protected)?[\\s]?class [a-zA-Z0-9\\s\\W]* \\{";
+	private static final String PRINT = "System.out.print(ln)?\\([a-zA-Z0-9\\s\\W]*\\);";
 	
 	public static String getExtension() 
 	{
@@ -23,11 +24,14 @@ public class Java extends Language
 		if(statement.matches(RETURN))
 			result = "RETURN";
 		
-		if(statement.matches(ASSIGNMENT))
+		else if(statement.matches(ASSIGNMENT))
 			result = "ASSIGNMENT";
 		
-		if(statement.matches(OPENING))
+		else if(statement.matches(OPENING))
 			result = "OPENING";
+		
+		else if(statement.matches(PRINT))
+			result = "PRINT";
 		
 		return result;
 	}
@@ -45,5 +49,10 @@ public class Java extends Language
 	public static String openingStatement(String className, String visability)
 	{
 		return (visability + " class " + className + " {").trim();
+	}
+	
+	public static String printStatement(String content)
+	{
+		return "System.out.println(\"" + content + "\");";
 	}
 }

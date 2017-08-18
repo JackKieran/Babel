@@ -155,4 +155,10 @@ public class JavaTest
 	{
 		assertEquals("OPENING", Java.determineStatementType("class ClassName {"));
 	}
+	
+	@Test
+	public void ClassGivenPrintStatement()
+	{
+		assertEquals("PRINT", Java.determineStatementType(Java.printStatement("Hello World!")));
+	}
 }

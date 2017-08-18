@@ -59,4 +59,11 @@ public class PythonTest
 	{
 		assertEquals("RETURN", Python.determineStatementType("return \"result\""));
 	}
+	
+	
+	@Test
+	public void ClassGivenPrintStatement()
+	{
+		assertEquals("PRINT", Python.determineStatementType(Python.printStatement("\"Hello World!\"")));
+	}
 }
