@@ -1,6 +1,6 @@
 package language;
 
-class Language 
+public class Language 
 {
 	public static String getExtension()
 	{
@@ -12,4 +12,17 @@ class Language
 		return "language";
 	}
 	
+	public static Language getLanguageFromExtension(String extension)
+	{
+		Language result = null;
+		
+		switch(extension) 
+		{
+			case ".java": result = new Java(); break;
+			
+			case ".py": result = new Python(); break;
+		}
+		
+		return result;
+	}
 }

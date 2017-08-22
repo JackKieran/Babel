@@ -6,40 +6,19 @@ import language.*;
 
 public class ProgramFile 
 {
-
-	File file;
-	Language language;
+	private Language language;
 	
-	private ProgramFile(String filepath) 
+	public ProgramFile(File file)
 	{
-		file = new File(filepath);
-		language = getFileLanguage(filepath);
+		String filename = file.getName();
+		String extension = filename.substring(filename.lastIndexOf('.'));
+		
+		language = Language.getLanguageFromExtension(extension);
+	}
+	
+	public Language getLanguage()
+	{
+		return this.language;
 	}
 
-	private Language getFileLanguage(String filepath)
-	{
-		if(filepath.endsWith(".java"))
-			return new Java();
-		
-		if(filepath.endsWith(".py"))
-			return new Python();
-		
-		
-		else
-			return null;
-	}
-	
-	public static ProgramFile newFile(String filepath)
-	{
-		if(validProgramFilepath(filepath))
-			return new ProgramFile(filepath);
-		
-		return null;
-	}
-	
-	private static boolean validProgramFilepath(String filepath)
-	{
-		return true;
-	}
-	
 }
