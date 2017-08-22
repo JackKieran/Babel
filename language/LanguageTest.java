@@ -24,4 +24,22 @@ public class LanguageTest
 	{
 		assertEquals(true, Language.getLanguageFromExtension(".py") instanceof Python);
 	}
+	
+	@Test
+	public void GetLanguageFromNameNull()
+	{
+		assertEquals(null, Language.getLanguageFromName(""));
+	}
+	
+	@Test
+	public void GetLanguageFromNameJava()
+	{
+		assertEquals(true, Language.getLanguageFromName("java") instanceof Java);
+	}
+	
+	@Test
+	public void GetLanguageFromNamePython()
+	{
+		assertEquals(true, Language.getLanguageFromName("python") instanceof Python);
+	}
 }

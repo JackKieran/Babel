@@ -6,64 +6,66 @@ import org.junit.Test;
 
 public class PythonTest 
 {
+	public Python python = new Python();
+	
 	@Test
 	public void NullStatementTest() 
 	{
-		assertEquals(null, Python.determineStatementType(""));
+		assertEquals(null, python.determineStatementType(""));
 	}
 	
 	@Test
 	public void ClassGivenReturnVariableStatement()
 	{
-		assertEquals("RETURN", Python.determineStatementType(Python.returnStatement("variable")));
+		assertEquals("RETURN", python.determineStatementType(python.returnStatement("variable")));
 	}
 	
 	@Test
 	public void TesterGivenReturnVariableStatement()
 	{
-		assertEquals("RETURN", Python.determineStatementType("return variable"));
+		assertEquals("RETURN", python.determineStatementType("return variable"));
 	}
 	
 	@Test
 	public void ClassGivenReturnIntStatement()
 	{
-		assertEquals("RETURN", Python.determineStatementType(Python.returnStatement("5")));
+		assertEquals("RETURN", python.determineStatementType(python.returnStatement("5")));
 	}
 	
 	@Test
 	public void TesterGivenReturnIntStatement()
 	{
-		assertEquals("RETURN", Python.determineStatementType("return 5"));
+		assertEquals("RETURN", python.determineStatementType("return 5"));
 	}
 	
 	@Test
 	public void ClassGivenReturnFloatStatement()
 	{
-		assertEquals("RETURN", Python.determineStatementType(Python.returnStatement("5.0f")));
+		assertEquals("RETURN", python.determineStatementType(python.returnStatement("5.0f")));
 	}
 	
 	@Test
 	public void TesterGivenReturnFloatStatement()
 	{
-		assertEquals("RETURN", Python.determineStatementType("return 5.0f"));
+		assertEquals("RETURN", python.determineStatementType("return 5.0f"));
 	}
 	
 	@Test
 	public void ClassGivenReturnStringStatement()
 	{
-		assertEquals("RETURN", Python.determineStatementType(Python.returnStatement("\"result\"")));
+		assertEquals("RETURN", python.determineStatementType(python.returnStatement("\"result\"")));
 	}
 	
 	@Test
 	public void TesterGivenReturnStringStatement()
 	{
-		assertEquals("RETURN", Python.determineStatementType("return \"result\""));
+		assertEquals("RETURN", python.determineStatementType("return \"result\""));
 	}
 	
 	
 	@Test
 	public void ClassGivenPrintStatement()
 	{
-		assertEquals("PRINT", Python.determineStatementType(Python.printStatement("\"Hello World!\"")));
+		assertEquals("PRINT", python.determineStatementType(python.printStatement("\"Hello World!\"")));
 	}
 }

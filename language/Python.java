@@ -2,22 +2,24 @@ package language;
 
 public class Python extends Language 
 {
-	private static final String RETURN = "return [a-zA-Z0-9\\W\\s]*[^;]";
-	private static final String ASSIGNMENT = "[a-zA-Z0-9]+ [\\W]?= [\\W]?[a-zA-Z0-9]+[\\W]?[^;]";
-	private static final String PRINT = "print[\\s]?\\([a-zA-Z0-9\\s\\W]*\\)";
+	private  final String RETURN = "return [a-zA-Z0-9\\W\\s]*[^;]";
+	private  final String ASSIGNMENT = "[a-zA-Z0-9]+ [\\W]?= [\\W]?[a-zA-Z0-9]+[\\W]?[^;]";
+	private  final String PRINT = "print[\\s]?\\([a-zA-Z0-9\\s\\W]*\\)";
 	
-	public static String getExtension()
+	@Override
+	public String getExtension()
 	{
 		return ".py";
 	}
 
-	public static String getLanguage() 
+	@Override
+	public String getLanguage() 
 	{
 		return "Python";
 	}
 	
 	
-	public static String determineStatementType(String statement)
+	public String determineStatementType(String statement)
 	{
 		String result = null;
 		
@@ -33,17 +35,17 @@ public class Python extends Language
 		return result;
 	}
 	
-	public static String returnStatement(String parameter)
+	public String returnStatement(String parameter)
 	{
 		return "return " + parameter;
 	}
 	
-	public static String assignmentStatement(String variable, String value)
+	public String assignmentStatement(String variable, String value)
 	{
 		return variable + " = " + value;
 	}
 	
-	public static String printStatement(String content)
+	public String printStatement(String content)
 	{
 		return "print (" + content + ")";
 	}

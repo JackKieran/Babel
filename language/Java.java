@@ -7,17 +7,18 @@ public class Java extends Language
 	private static final String OPENING = "(public|private|protected)?[\\s]?class [a-zA-Z0-9\\s\\W]* \\{";
 	private static final String PRINT = "System.out.print(ln)?\\([a-zA-Z0-9\\s\\W]*\\);";
 	
-	public static String getExtension() 
+	@Override
+	public String getExtension() 
 	{
 		return ".java";
 	}
 
-	public static String getLanguage() 
+	public String getLanguage() 
 	{
 		return "Java";
 	}
 
-	public static String determineStatementType(String statement)
+	public String determineStatementType(String statement)
 	{
 		String result = null;
 		
@@ -36,22 +37,22 @@ public class Java extends Language
 		return result;
 	}
 	
-	public static String returnStatement(String parameter) 
+	public String returnStatement(String parameter) 
 	{
 		return "return " + parameter + ";";
 	}
 
-	public static String assignmentStatement(String variable, String value)
+	public String assignmentStatement(String variable, String value)
 	{
 		return variable + " = " + value + ";";
 	}
 	
-	public static String openingStatement(String className, String visability)
+	public String openingStatement(String className, String visability)
 	{
 		return (visability + " class " + className + " {").trim();
 	}
 	
-	public static String printStatement(String content)
+	public String printStatement(String content)
 	{
 		return "System.out.println(\"" + content + "\");";
 	}

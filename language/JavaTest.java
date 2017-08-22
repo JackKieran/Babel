@@ -6,159 +6,168 @@ import org.junit.Test;
 
 public class JavaTest 
 {
+	
+	public Java java = new Java();
+	
 	@Test
 	public void nullStatementTest()
 	{
-		assertEquals(null, Java.determineStatementType(""));
+		assertEquals(null, java.determineStatementType(""));
 	}
 	
 	@Test
 	public void ClassGivenReturnIntStatementTest()
 	{
-		assertEquals("RETURN", Java.determineStatementType(Java.returnStatement("5")));
+		assertEquals("RETURN", java.determineStatementType(java.returnStatement("5")));
 	}
 	
 	@Test
 	public void TesterGivenReturnIntStatementTest()
 	{
-		assertEquals("RETURN", Java.determineStatementType("return 5;"));
+		assertEquals("RETURN", java.determineStatementType("return 5;"));
 	}
 	
 	@Test
 	public void ClassGivenReturnFloatStatementTest()
 	{
-		assertEquals("RETURN", Java.determineStatementType(Java.returnStatement("5.0f")));
+		assertEquals("RETURN", java.determineStatementType(java.returnStatement("5.0f")));
 	}
 	
 	@Test
 	public void TesterGivenReturnFloatStatementTest()
 	{
-		assertEquals("RETURN", Java.determineStatementType("return 5.0f;"));
+		assertEquals("RETURN", java.determineStatementType("return 5.0f;"));
 	}
 	
 	@Test
 	public void TesterGivenReturnStringStatementTest()
 	{
-		assertEquals("RETURN", Java.determineStatementType("return \"result\";"));
+		assertEquals("RETURN", java.determineStatementType("return \"result\";"));
 	}
 	
 	@Test
 	public void ClassGivenReturnStringStatementTest()
 	{
-		assertEquals("RETURN", Java.determineStatementType(Java.returnStatement("\"result\"")));
+		assertEquals("RETURN", java.determineStatementType(java.returnStatement("\"result\"")));
 	}
 	
 	@Test
 	public void ClassGivenStringAssignmentNonSpecifiedTypeStatement()
 	{
-		assertEquals("ASSIGNMENT", Java.determineStatementType(Java.assignmentStatement("hello", "hello")));
+		assertEquals("ASSIGNMENT", java.determineStatementType(java.assignmentStatement("hello", "hello")));
 	}
 	
 	@Test
 	public void TesterGivenStringAssignmentNonSpecifiedTypeStatement()
 	{
-		assertEquals("ASSIGNMENT", Java.determineStatementType("hello = \"hello\";"));
+		assertEquals("ASSIGNMENT", java.determineStatementType("hello = \"hello\";"));
 	}
 	
 	@Test
 	public void ClassGivenStringAssignmentSpecifiedTypeStatement()
 	{
-		assertEquals("ASSIGNMENT", Java.determineStatementType(Java.assignmentStatement("String hello", "hello there")));
+		assertEquals("ASSIGNMENT", java.determineStatementType(java.assignmentStatement("String hello", "hello there")));
 	}
 	
 	@Test
 	public void TesterGivenStringAssignmentSpecifiedTypeStatement()
 	{
-		assertEquals("ASSIGNMENT", Java.determineStatementType("String hello = \"hello there\";"));
+		assertEquals("ASSIGNMENT", java.determineStatementType("String hello = \"hello there\";"));
 	}
 	
 	@Test
 	public void ClassGivenFloatAssignmentNonSpecifiedTypeStatement()
 	{
-		assertEquals("ASSIGNMENT", Java.determineStatementType(Java.assignmentStatement("variable", "5.0f")));
+		assertEquals("ASSIGNMENT", java.determineStatementType(java.assignmentStatement("variable", "5.0f")));
 	}
 	
 	@Test
 	public void TesterGivenFloatAssignmentNonSpecifiedTypeStatement()
 	{
-		assertEquals("ASSIGNMENT", Java.determineStatementType("variable = 5.0f;"));
+		assertEquals("ASSIGNMENT", java.determineStatementType("variable = 5.0f;"));
 	}
 	
 	@Test
 	public void ClassGivenFloatAssignmentSpecifiedTypeStatement()
 	{
-		assertEquals("ASSIGNMENT", Java.determineStatementType(Java.assignmentStatement("float variable", "5.0f")));
+		assertEquals("ASSIGNMENT", java.determineStatementType(java.assignmentStatement("float variable", "5.0f")));
 	}
 	
 	@Test
 	public void TesterGivenFloatAssignmentSpecifiedTypeSatement()
 	{
-		assertEquals("ASSIGNMENT", Java.determineStatementType("float variable = 5.0f;"));
+		assertEquals("ASSIGNMENT", java.determineStatementType("float variable = 5.0f;"));
 	}
 	
 	@Test
 	public void ClassGivenCharAssignmentSpecifiedTypeStatement()
 	{
-		assertEquals("ASSIGNMENT", Java.determineStatementType(Java.assignmentStatement("char variable", "a")));
+		assertEquals("ASSIGNMENT", java.determineStatementType(java.assignmentStatement("char variable", "a")));
 	}
 	
 	@Test
 	public void TesterGivenCharAssignmentSpecifiedTypeStatement()
 	{
-		assertEquals("ASSIGNMENT", Java.determineStatementType("char variable = 'a';"));
+		assertEquals("ASSIGNMENT", java.determineStatementType("char variable = 'a';"));
 	}
 	
 	@Test
 	public void ClassGivenPublicClassOpeningStatement()
 	{
-		assertEquals("OPENING", Java.determineStatementType(Java.openingStatement("ClassName", "public")));
+		assertEquals("OPENING", java.determineStatementType(java.openingStatement("ClassName", "public")));
 	}
 	
 	@Test
 	public void TesterGivenPublicClassOpeningStatement()
 	{
-		assertEquals("OPENING", Java.determineStatementType("public class ClassName {"));
+		assertEquals("OPENING", java.determineStatementType("public class ClassName {"));
 	}
 	
 	@Test
 	public void ClassGivenPrivateClassOpeningStatement()
 	{
-		assertEquals("OPENING", Java.determineStatementType(Java.openingStatement("ClassName", "private")));
+		assertEquals("OPENING", java.determineStatementType(java.openingStatement("ClassName", "private")));
 	}
 	
 	@Test
 	public void TesterGivenPrivateClassOpeningStatement()
 	{
-		assertEquals("OPENING", Java.determineStatementType("private class ClassName {"));
+		assertEquals("OPENING", java.determineStatementType("private class ClassName {"));
 	}
 	
 	@Test
 	public void ClassGivenProtectedClassOpeningStatement()
 	{
-		assertEquals("OPENING", Java.determineStatementType(Java.openingStatement("ClassName", "protected")));
+		assertEquals("OPENING", java.determineStatementType(java.openingStatement("ClassName", "protected")));
 	}
 	
 	@Test
 	public void TesterGivenProtectedClassOpeningStatement()
 	{
-		assertEquals("OPENING", Java.determineStatementType("protected class ClassName {"));
+		assertEquals("OPENING", java.determineStatementType("protected class ClassName {"));
 	}
 	
 	@Test
 	public void ClassGivenDefaultClassOpeningStatement()
 	{
-		assertEquals("OPENING", Java.determineStatementType(Java.openingStatement("ClassName", "")));
+		assertEquals("OPENING", java.determineStatementType(java.openingStatement("ClassName", "")));
 	}
 	
 	@Test
 	public void TesterGivenDefaultClassOpeningStatement()
 	{
-		assertEquals("OPENING", Java.determineStatementType("class ClassName {"));
+		assertEquals("OPENING", java.determineStatementType("class ClassName {"));
 	}
 	
 	@Test
 	public void ClassGivenPrintStatement()
 	{
-		assertEquals("PRINT", Java.determineStatementType(Java.printStatement("Hello World!")));
+		assertEquals("PRINT", java.determineStatementType(java.printStatement("Hello World!")));
+	}
+	
+	@Test
+	public void getLanguage()
+	{
+		assertEquals(true, java.getLanguage().equals("Java"));
 	}
 }

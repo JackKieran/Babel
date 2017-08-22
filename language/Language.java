@@ -2,12 +2,12 @@ package language;
 
 public class Language 
 {
-	public static String getExtension()
+	public String getExtension()
 	{
 		return ".extension";
 	}
 	
-	public static String getLanguage()
+	public String getLanguage()
 	{
 		return "language";
 	}
@@ -21,6 +21,21 @@ public class Language
 			case ".java": result = new Java(); break;
 			
 			case ".py": result = new Python(); break;
+		}
+		
+		return result;
+	}
+	
+	public static Language getLanguageFromName(String name)
+	{
+		Language result = null;
+		String testValue = name.toLowerCase();
+		
+		switch(testValue)
+		{
+			case "java": result = new Java(); break;
+			
+			case "python": result = new Python(); break; 
 		}
 		
 		return result;
