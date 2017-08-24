@@ -1,6 +1,7 @@
 package translator;
 
 import java.io.File;
+import java.io.IOException;
 
 import language.Language;
 
@@ -18,11 +19,19 @@ public class ProgramFileManager
 		return instance;
 	}
 	
-	public ProgramFile [] getTranslatingFiles(File fileToTranslate, String languageToTranslateTo) throws FileIsTheSameLanguageException
+	public ProgramFile [] getTranslatingFiles(File fileToTranslate, String languageToTranslateTo) throws FileIsTheSameLanguageException, IOException
 	{
 		ProgramFile [] result = new ProgramFile [2];
 		
-		result[0] = new ProgramFile(fileToTranslate);
+		try
+		{
+			result[0] = new ProgramFile(fileToTranslate);
+		}
+		catch(IOException io)
+		{
+			io.printStackTrace();
+			throw io;
+		}
 		Language before = result[0].getLanguage();
 		
 		if(sameLanguage(before, languageToTranslateTo))
@@ -33,16 +42,22 @@ public class ProgramFileManager
 		String newFileName = result[0].getFile().getName();
 		newFileName = newFileName.substring(0, newFileName.lastIndexOf('.'));
 		String newExtension = after.getExtension();
-		String newFilepath = result[0].getFile().getParent() + newFileName;
+		String newFilepath = result[0].getFile().getParent() + newFileName + newExtension;
 			
-		result[1] = new ProgramFile(new File(newFilepath));
+		try
+		{
+			result[1] = new ProgramFile(new File(newFilepath));
+		}
+		catch(IOException io)
+		{
+			io.printStackTrace();
+		}
 		
 		return result;
 	}
 	
-	public boolean sameLanguage(Language before, String after)
+	private boolean sameLanguage(Language before, String after)
 	{
-		System.out.println(before.getLanguage());
 		return before.getLanguage().equals(after);
 	}
 }

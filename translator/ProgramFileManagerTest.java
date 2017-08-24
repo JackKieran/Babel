@@ -3,6 +3,7 @@ package translator;
 import static org.junit.Assert.*;
 
 import java.io.File;
+import java.io.IOException;
 
 import org.junit.Test;
 
@@ -13,19 +14,44 @@ public class ProgramFileManagerTest
 	ProgramFileManager pfm = ProgramFileManager.getInstance();
 	
 	@Test
-	public void GetTranslatingFilesThrowException()
+	public void GetTranslatingJavaFileThrowsFileIsTheSameLanguageException()
 	{
 		try
 		{
-			File fileToTranslate = new File("/Babel/Examples/translatingFilesExamples/translatingFilesThrowException.java");
+			File fileToTranslate = new File("translatingFilesThrowException.java");
 			pfm.getTranslatingFiles(fileToTranslate, "Java");
-			
-			fail("Method: getTranslatingFiles should have thrown a FileIsTheSameLanguage exception");
+			fail("getTranslatingFiles should have thrown an exception");
 		}
 		
-		catch(Exception e)
+		catch(FileIsTheSameLanguageException fITSL)
 		{
-			assertEquals("The file: translatingFilesThrowException.java is already a Java file", e.getMessage());
+			assertTrue(true);
+		}
+		
+		catch(IOException io)
+		{
+			fail("getTranslatingFiles should have thrown a FileIsTheSameLanguageException");
+		}
+	}
+	
+	@Test
+	public void GetTranslatingFileThrowsIOException()
+	{
+		try
+		{
+			File fileToTranslate = new File("");
+			pfm.getTranslatingFiles(fileToTranslate, "Python");
+			fail("getTranslatingFiles should have thrown an exception");
+		}
+		
+		catch(FileIsTheSameLanguageException fITSL)
+		{
+			fail("getTranslatingFiles should have thrown an IOException");
+		}
+		
+		catch(IOException io)
+		{
+			assertTrue(true);
 		}
 	}
 	
@@ -34,23 +60,44 @@ public class ProgramFileManagerTest
 	{
 		try
 		{
-			File fileToTranslate = new File("/Babel/Examples/translatingFilesExamples/translatingFilesThrowException.java");
+			File fileToTranslate = new File("exampleJavaProgramFile.java");
 			ProgramFile [] files = pfm.getTranslatingFiles(fileToTranslate, "Python");
 			
-			assertEquals(true, files[1].getLanguage() instanceof Python);
+			assertTrue(files[0].getLanguage() instanceof Java);
+			assertTrue(files[1].getLanguage() instanceof Python);
 		}
 		
-		catch(Exception e)
+		catch(FileIsTheSameLanguageException fITSL)
 		{
-			e.printStackTrace();
-			fail("Method: getTranslatingFiles should not have thrown an exception");
+			fail("getTranslatingFiles should not have thrown a FileIsTheSameLanguageException");
+		}
+		
+		catch(IOException io)
+		{
+			fail("getTranslatingFiles should not have thrown an IOException");
 		}
 	}
 	
-	
 	@Test
-	public void sameLanguage()
+	public void GetTranslatingFilesPythonToJava()
 	{
-		assertEquals(true, pfm.sameLanguage(new Java(), "java"));
+		try
+		{
+			File fileToTranslate = new File("examplePythonProgramFile.py");
+			ProgramFile [] files = pfm.getTranslatingFiles(fileToTranslate, "Java");
+			
+			assertTrue(files[0].getLanguage() instanceof Python);
+			assertTrue(files[1].getLanguage() instanceof Java);
+		}
+		
+		catch(FileIsTheSameLanguageException fITSL)
+		{
+			fail("getTranslatingFiles should not have thrown a FileIsTheSameLanguageException");
+		}
+		
+		catch(IOException io)
+		{
+			fail("getTranslatingFiles should not have thrown an IOException");
+		}
 	}
 }

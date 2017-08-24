@@ -1,6 +1,7 @@
 package translator;
 
 import java.io.File;
+import java.io.IOException;
 
 import language.*;
 
@@ -9,9 +10,19 @@ public class ProgramFile
 	private File file;
 	private Language language;
 	
-	public ProgramFile(File file)
+	public ProgramFile(File file) throws IOException
 	{
 		this.file = file;
+		
+		try
+		{
+			this.file.createNewFile();
+		}
+		catch(IOException io)
+		{
+			io.printStackTrace();
+			throw io;
+		}
 		
 		String filename = file.getName();
 		String extension = filename.substring(filename.lastIndexOf('.'));
