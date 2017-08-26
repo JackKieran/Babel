@@ -6,6 +6,7 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
+import java.io.File;
 
 import javax.swing.JButton;
 import javax.swing.JFrame;
@@ -15,8 +16,11 @@ import translator.Translator;
 
 public class Babel implements ActionListener, KeyListener
 {
-	private String fileToTranslate, languageToTranslateTo;
+	private File fileToTranslate; 
+	private String languageToTranslateTo;
 	private JFrame programWindow = new JFrame("Babel");
+	
+	private Translator translator = new Translator();
 	
 	public static void main(String[] args) 
 	{
@@ -69,10 +73,10 @@ public class Babel implements ActionListener, KeyListener
 	
 	public void translate()
 	{
-		fileToTranslate = ((JTextField)(programWindow.getComponent(0))).getText();
+		fileToTranslate = new File(((JTextField)(programWindow.getComponent(0))).getText());
 		languageToTranslateTo = ((JTextField)(programWindow.getComponent(1))).getText();
 		
-		Translator.translate(fileToTranslate, languageToTranslateTo);
+		translator.translate(fileToTranslate, languageToTranslateTo);
 	}
 	
 	public void quit()

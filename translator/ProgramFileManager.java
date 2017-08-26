@@ -19,7 +19,7 @@ public class ProgramFileManager
 		return instance;
 	}
 	
-	public ProgramFile [] getTranslatingFiles(File fileToTranslate, String languageToTranslateTo) throws FileIsTheSameLanguageException, IOException
+	public ProgramFile [] getTranslatingFiles(File fileToTranslate, String languageToTranslateTo) throws FileIsTheSameLanguageException, IOException, FileIsNotAProgramException
 	{
 		ProgramFile [] result = new ProgramFile [2];
 		
@@ -33,6 +33,9 @@ public class ProgramFileManager
 			throw io;
 		}
 		Language before = result[0].getLanguage();
+		
+		if(before == null)
+			throw new FileIsNotAProgramException(fileToTranslate);
 		
 		if(sameLanguage(before, languageToTranslateTo))
 			throw new FileIsTheSameLanguageException(fileToTranslate, languageToTranslateTo);
@@ -77,5 +80,21 @@ class FileIsTheSameLanguageException extends Exception
 	public String getMessage()
 	{
 		return "The file: " + fileToTranslate.getName() + " is already a " + languageToTranslateTo + " file";
+	}
+}
+
+class FileIsNotAProgramException extends Exception
+{
+	private File fileToTranslate;
+	
+	public FileIsNotAProgramException(File fileToTranslate)
+	{
+		this.fileToTranslate = fileToTranslate;
+	}
+	
+	@Override
+	public String getMessage()
+	{
+		return "The file: " + fileToTranslate.getName() + " is not a translateable program";
 	}
 }

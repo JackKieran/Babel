@@ -32,6 +32,11 @@ public class ProgramFileManagerTest
 		{
 			fail("getTranslatingFiles should have thrown a FileIsTheSameLanguageException");
 		}
+		
+		catch(FileIsNotAProgramException fINAP)
+		{
+			fail("getTranslatingFiles should not have thrown a FileIsNotAProgramException");
+		}
 	}
 	
 	@Test
@@ -50,6 +55,37 @@ public class ProgramFileManagerTest
 		}
 		
 		catch(IOException io)
+		{
+			assertTrue(true);
+		}
+		
+		catch(FileIsNotAProgramException fINAP)
+		{
+			fail("getTranslatingFiles should not have thrown a FileIsNotAProgramException");
+		}
+	}
+	
+	@Test
+	public void GetTranslatingFilesThrowsFileIsNotAProgram()
+	{
+		try
+		{
+			File fileToTranslate = new File("exampleNotAProgram.txt");
+			pfm.getTranslatingFiles(fileToTranslate, "Python");
+			fail("getTranslatingFiles should have thrown an exception");
+		}
+		
+		catch(FileIsTheSameLanguageException fITSL)
+		{
+			fail("getTranslatingFiles should not have thrown a FileIsTheSameLanguagueException");
+		}
+		
+		catch(IOException io)
+		{
+			fail("getTranslatingFiles should not have thrown an IOException");
+		}
+		
+		catch(FileIsNotAProgramException fINAP)
 		{
 			assertTrue(true);
 		}
@@ -76,6 +112,11 @@ public class ProgramFileManagerTest
 		{
 			fail("getTranslatingFiles should not have thrown an IOException");
 		}
+		
+		catch(FileIsNotAProgramException fINAP)
+		{
+			fail("getTranslatingFiles should not have thrown a FileIsNotAProgramException");
+		}
 	}
 	
 	@Test
@@ -98,6 +139,11 @@ public class ProgramFileManagerTest
 		catch(IOException io)
 		{
 			fail("getTranslatingFiles should not have thrown an IOException");
+		}
+		
+		catch(FileIsNotAProgramException fINAP)
+		{
+			fail("getTranslatingFiles should not have thrown a FileIsNotAProgramException");
 		}
 	}
 }
