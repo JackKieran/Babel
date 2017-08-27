@@ -20,7 +20,6 @@ public class ProgramFile
 		}
 		catch(IOException io)
 		{
-			io.printStackTrace();
 			throw io;
 		}
 		

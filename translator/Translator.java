@@ -10,7 +10,7 @@ public class Translator
 	private static final ProgramFileManager pfm = ProgramFileManager.getInstance();
 	private String programFile0Contents;
 	
-	public void translate(File fileToTranslate, String languageToTranslateTo)
+	public void translate(File fileToTranslate, String languageToTranslateTo) throws FileIsTheSameLanguageException, IOException, FileIsNotAProgramException, NotAValidLanguageException
 	{
 		ProgramFile [] files = null;
 		
@@ -19,9 +19,9 @@ public class Translator
 			files = pfm.getTranslatingFiles(fileToTranslate, languageToTranslateTo);
 		}
 		
-		catch(Exception e)
+		catch(FileIsTheSameLanguageException | IOException | FileIsNotAProgramException | NotAValidLanguageException e)
 		{
-			e.printStackTrace();
+			throw e;
 		}
 		
 		programFile0Contents = getContentsOfProgramFile(files[0]);

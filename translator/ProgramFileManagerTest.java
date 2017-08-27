@@ -37,6 +37,11 @@ public class ProgramFileManagerTest
 		{
 			fail("getTranslatingFiles should not have thrown a FileIsNotAProgramException");
 		}
+		
+		catch(NotAValidLanguageException nAVL)
+		{
+			fail("getTranslatingFiles should not have thrown a NotAValidLanguageException");
+		}
 	}
 	
 	@Test
@@ -63,6 +68,11 @@ public class ProgramFileManagerTest
 		{
 			fail("getTranslatingFiles should not have thrown a FileIsNotAProgramException");
 		}
+		
+		catch(NotAValidLanguageException nAVL)
+		{
+			fail("getTranslatingFiles should not have thrown a NotAValidLanguageException");
+		}
 	}
 	
 	@Test
@@ -86,6 +96,42 @@ public class ProgramFileManagerTest
 		}
 		
 		catch(FileIsNotAProgramException fINAP)
+		{
+			assertTrue(true);
+		}
+		
+		catch(NotAValidLanguageException nAVL)
+		{
+			fail("getTranslatingFiles should not have thrown a NotAValidLanguageException");
+		}
+	}
+	
+	@Test
+	public void GetTranslatingFilesThrowsNotAValidLanguage()
+	{
+		try
+		{
+			File fileToTranslate = new File("exampleJavaProgramFile.java");
+			pfm.getTranslatingFiles(fileToTranslate, "");
+			fail("getTranslatingFiles should have thrown an exception");
+		}
+		
+		catch(FileIsTheSameLanguageException fITSL)
+		{
+			fail("getTranslatingFiles should not have thrown a FileIsTheSameLanguagueException");
+		}
+		
+		catch(IOException io)
+		{
+			fail("getTranslatingFiles should not have thrown an IOException");
+		}
+		
+		catch(FileIsNotAProgramException fINAP)
+		{
+			fail("getTranslatingFiles should not have thrown a FileIsNotAProgramException");
+		}
+		
+		catch(NotAValidLanguageException nAVL)
 		{
 			assertTrue(true);
 		}
@@ -117,6 +163,11 @@ public class ProgramFileManagerTest
 		{
 			fail("getTranslatingFiles should not have thrown a FileIsNotAProgramException");
 		}
+		
+		catch(NotAValidLanguageException nAVL)
+		{
+			fail("getTranslatingFiles should not have thrown a NotAValidLanguageException");
+		}
 	}
 	
 	@Test
@@ -144,6 +195,11 @@ public class ProgramFileManagerTest
 		catch(FileIsNotAProgramException fINAP)
 		{
 			fail("getTranslatingFiles should not have thrown a FileIsNotAProgramException");
+		}
+		
+		catch(NotAValidLanguageException nAVL)
+		{
+			fail("getTranslatingFiles should not have thrown a NotAValidLanguageException");
 		}
 	}
 }

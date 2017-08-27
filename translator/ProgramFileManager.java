@@ -19,7 +19,7 @@ public class ProgramFileManager
 		return instance;
 	}
 	
-	public ProgramFile [] getTranslatingFiles(File fileToTranslate, String languageToTranslateTo) throws FileIsTheSameLanguageException, IOException, FileIsNotAProgramException
+	public ProgramFile [] getTranslatingFiles(File fileToTranslate, String languageToTranslateTo) throws FileIsTheSameLanguageException, IOException, FileIsNotAProgramException, NotAValidLanguageException
 	{
 		ProgramFile [] result = new ProgramFile [2];
 		
@@ -29,7 +29,6 @@ public class ProgramFileManager
 		}
 		catch(IOException io)
 		{
-			io.printStackTrace();
 			throw io;
 		}
 		Language before = result[0].getLanguage();
@@ -42,6 +41,9 @@ public class ProgramFileManager
 		
 		Language after = Language.getLanguageFromName(languageToTranslateTo);
 		
+		if(after == null)
+			throw new NotAValidLanguageException(languageToTranslateTo);
+		
 		String newFileName = result[0].getFile().getName();
 		newFileName = newFileName.substring(0, newFileName.lastIndexOf('.'));
 		String newExtension = after.getExtension();
@@ -53,7 +55,7 @@ public class ProgramFileManager
 		}
 		catch(IOException io)
 		{
-			io.printStackTrace();
+			throw io;
 		}
 		
 		return result;
@@ -96,5 +98,21 @@ class FileIsNotAProgramException extends Exception
 	public String getMessage()
 	{
 		return "The file: " + fileToTranslate.getName() + " is not a translateable program";
+	}
+}
+
+class NotAValidLanguageException extends Exception
+{
+	private String language;
+	
+	public NotAValidLanguageException(String language)
+	{
+		this.language = language;
+	}
+	
+	@Override
+	public String getMessage()
+	{
+		return "The language: " + language + " is not a valid/translatable language";
 	}
 }
